@@ -7,4 +7,4 @@ const nextConfig = {
 	webpack: {},
 };
 
-module.exports = createVanillaExtractPlugin(nextConfig);
+module.exports = createVanillaExtractPlugin()(nextConfig);
