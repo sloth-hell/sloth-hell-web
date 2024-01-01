@@ -1,14 +1,10 @@
+const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  webpack: {
-    rules: [
-      {
-        test: /\.js/,
-        use: [{ loader: "@wyw-in-js/webpack-loader" }],
-      },
-    ],
-  },
+	reactStrictMode: true,
+	swcMinify: true,
+	webpack: {},
 };
 
-module.exports = nextConfig;
+module.exports = createVanillaExtractPlugin(nextConfig);
