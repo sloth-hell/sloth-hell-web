@@ -12,6 +12,9 @@
 	},
 	"dependencies": {
 		"@vanilla-extract/css": "^1.14.0",
+		"@vanilla-extract/dynamic": "^2.1.0",
+		"@vanilla-extract/recipes": "^0.5.1",
+		"dayjs": "^1.11.10",
 		"next": "14.0.4",
 		"react": "^18",
 		"react-dom": "^18",
@@ -37,6 +40,7 @@
 		"jest-environment-jsdom": "^29.7.0",
 		"node-mocks-http": "^1.14.0",
 		"prettier": "^3.1.1",
+		"sass": "^1.70.0",
 		"ts-jest": "^29.1.1",
 		"typescript": "^5"
 	}

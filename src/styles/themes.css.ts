@@ -4,7 +4,7 @@ type Tokens = {
 	[key: string]: string | Tokens;
 };
 
-const _tokenize = (colors: string[] | Tokens): Tokens =>
+const _tokenize = (colors: string[] | Tokens): { [key: string]: string } =>
 	Array.isArray(colors)
 		? colors.reduce(
 				(acc, color, idx) => ({ ...acc, [String(idx + 1).padStart(2, '0')]: color }),
@@ -12,7 +12,7 @@ const _tokenize = (colors: string[] | Tokens): Tokens =>
 			)
 		: colors;
 
-const _colors = {
+export const _colors = {
 	bg: _tokenize(['#1E1E1E', '#2A2B2E', '#3D3E42']),
 	basic: {
 		white: '#FFFFFF',
