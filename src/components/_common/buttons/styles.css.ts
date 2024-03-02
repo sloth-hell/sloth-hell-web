@@ -53,8 +53,8 @@ const button = recipe({
 	base: {
 		all: 'unset',
 		borderRadius: 12,
-		// margin: '28px 16px 12px',
 		fontSize: 16,
+		fontWeight: 700,
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
