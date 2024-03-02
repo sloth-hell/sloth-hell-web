@@ -45,3 +45,4 @@ export const _colors = {
 export const theme = createTheme({
 	color: _colors,
 });
+export default theme;
