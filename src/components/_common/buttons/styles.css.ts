@@ -49,45 +49,39 @@ const fixedArea = recipe({
 	},
 });
 
-const button = recipe({
-	base: {
-		all: 'unset',
-		borderRadius: 12,
-		fontSize: 16,
-		fontWeight: 700,
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	variants: {
-		confirm: {
-			true: {
-				maxWidth: 343,
-				height: 52,
-				position: 'absolute',
-				top: 28,
-				left: 0,
-				right: 0,
-				margin: '0 auto',
-				background: colors.primary.red['01'],
-				zIndex: zIndex.confirm,
-			},
-		},
-		line: {},
-	},
+const buttonBase = style({
+	all: 'unset',
+	borderRadius: 12,
+	fontSize: 16,
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+	flexDirection: 'column',
 });
 
-const active = style({});
+const buttonConfirm = style([
+	buttonBase,
+	{
+		fontWeight: 700,
+		maxWidth: 343,
+		height: 52,
+		position: 'absolute',
+		top: 28,
+		left: 0,
+		right: 0,
+		margin: '0 auto',
+		background: colors.primary.red['01'],
+		zIndex: zIndex.confirm,
+	},
+]);
 
-// const areaGradient = style({
-// 	height: 28,
-// 	position: 'fixed',
-// 	top: 0,
-// 	background: 'linear-gradient(180deg, #1E1E1E 0%, rgba(#1E1E1E, 0) 100%)',
-// });
+const butttonImage = recipe({
+	base: [buttonBase, {}],
+});
 
 const styles = {
-	button,
+	buttonBase,
+	buttonConfirm,
 	fixedArea,
 };
 
