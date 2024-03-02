@@ -20,8 +20,8 @@ globalStyle('html', {
 });
 
 globalStyle('body', {
-	color: colors.gray['01'],
-	backgroundColor: colors.bg['01'],
+	color: colors.gray['01'] as string,
+	backgroundColor: colors.bg['01'] as string,
 	fontFamily: spocaSans,
 });
 
