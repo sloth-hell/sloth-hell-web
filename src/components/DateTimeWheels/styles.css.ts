@@ -63,7 +63,7 @@ export const item = recipe({
 		letterSpacing: -0.5,
 		fontSize: 20,
 		textAlign: 'center',
-		color: colors.gray['03'],
+		color: colors.gray['03'] as string,
 		userSelect: 'none',
 	},
 	variants: {
@@ -82,7 +82,7 @@ export const item = recipe({
 			minute: {},
 		},
 		selected: {
-			true: { fontWeight: 700, fontSize: 22, color: colors.gray['01'] },
+			true: { fontWeight: 700, fontSize: 22, color: colors.gray['01'] as string },
 		},
 		bound: {
 			true: { opacity: 0.4 },
