@@ -22,7 +22,6 @@ const fixedArea = recipe({
 			display: 'inline-block',
 			position: 'absolute',
 			bottom: 0,
-			background: '#1E1E1E',
 			content: '',
 		},
 	},
@@ -35,6 +34,7 @@ const fixedArea = recipe({
 				},
 				':after': {
 					height: 76,
+					background: '#1E1E1E',
 				},
 			},
 			false: {
@@ -44,6 +44,7 @@ const fixedArea = recipe({
 				},
 				':after': {
 					height: 104,
+					background: 'transparent',
 				},
 			},
 		},
@@ -54,7 +55,6 @@ const buttonConfirm = style([
 	buttonBase,
 	{
 		fontWeight: 700,
-		maxWidth: 343,
 		height: 52,
 		position: 'absolute',
 		top: 28,
