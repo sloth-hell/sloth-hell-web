@@ -27,8 +27,8 @@ export default function PopupConfirm({
 	cancel,
 }: PopupConfirmProps) {
 	const { closePopup, isOpenBody, isOpenBackdrop } = usePopupTransition(isOpen, {
-		timingOpen: 10,
-		timingClose: 10,
+		timingOpen: 60,
+		timingClose: 100,
 	});
 
 	const handleClickConfirm = (event: React.MouseEvent<HTMLButtonElement>) => {
