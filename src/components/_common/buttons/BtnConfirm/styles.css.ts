@@ -64,13 +64,21 @@ const buttonConfirm = style([
 		borderRadius: 12,
 		background: colors.primary.red['01'],
 		zIndex: zIndex.confirm,
+		willChange: 'background, color',
+		transition: '100ms',
 	},
 ]);
+
+const disabled = style({
+	background: colors.gray['04'],
+	color: colors.gray['03'],
+});
 
 const styles = {
 	buttonBase,
 	buttonConfirm,
 	fixedArea,
+	disabled,
 };
 
 export default styles;
