@@ -26,7 +26,7 @@ export default function BtnConfirm({
 	};
 
 	return (
-		<div className={clx(styles.fixedArea({ fixed: fixed ?? true }), className)}>
+		<div className={clx(styles.fixedArea({ fixed: fixed ?? false }), className)}>
 			<button
 				type="button"
 				className={clx([styles.buttonConfirm, { [styles.disabled]: disabled }])}
