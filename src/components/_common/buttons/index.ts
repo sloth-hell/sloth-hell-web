@@ -1,1 +1,2 @@
-export { default as BtnConfirm } from './ButtonConfirm';
+export { default as BtnConfirm } from './BtnConfirm';
+export { default as BtnImage } from './BtnToggle';
