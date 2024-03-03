@@ -7,13 +7,14 @@ const btnToggle = recipe({
 	base: [
 		buttonBase,
 		{
-			width: 109,
+			minWidth: 109,
+			width: '100%',
 			height: 103,
 			borderRadius: 10,
 			borderWidth: 1,
 			borderStyle: 'solid',
-			willChange: 'border-color',
-			transition: 'border-color 100ms',
+			willChange: 'border-color, color, font-weight',
+			transition: '100ms',
 			fontSize: 16,
 		},
 	],
