@@ -17,8 +17,13 @@ export const description = style({
 	zIndex: 2,
 });
 
+const test = style({
+	margin: 12,
+});
+
 const styles = {
 	main,
+	test,
 };
 
 export default styles;
