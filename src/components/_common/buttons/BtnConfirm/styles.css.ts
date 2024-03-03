@@ -9,7 +9,7 @@ const fixedArea = recipe({
 		height: 104,
 		bottom: 0,
 		zIndex: zIndex.confirm - 1,
-		':before': {
+		'::before': {
 			width: '100%',
 			display: 'inline-block',
 			position: 'absolute',
@@ -17,7 +17,7 @@ const fixedArea = recipe({
 			background: 'linear-gradient(0deg, #1E1E1E 0%, #001E1E1E 100%)',
 			content: '',
 		},
-		':after': {
+		'::after': {
 			width: '100%',
 			display: 'inline-block',
 			position: 'absolute',
@@ -29,20 +29,20 @@ const fixedArea = recipe({
 		fixed: {
 			true: {
 				position: 'absolute',
-				':before': {
+				'::before': {
 					height: 28,
 				},
-				':after': {
+				'::after': {
 					height: 76,
 					background: '#1E1E1E',
 				},
 			},
 			false: {
 				position: 'relative',
-				':before': {
+				'::before': {
 					height: 0,
 				},
-				':after': {
+				'::after': {
 					height: 104,
 					background: 'transparent',
 				},
