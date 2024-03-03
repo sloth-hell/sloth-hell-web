@@ -21,9 +21,12 @@ const test = style({
 	margin: 12,
 });
 
+const testPopup = style({});
+
 const styles = {
 	main,
 	test,
+	testPopup,
 };
 
 export default styles;
