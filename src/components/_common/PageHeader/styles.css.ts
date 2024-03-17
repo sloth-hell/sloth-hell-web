@@ -60,10 +60,12 @@ const progressBar = style({
 });
 
 const progressBarActive = style({
-	width: vars.progressPercent,
+	width: '100%',
 	height: '100%',
-	willChange: 'width',
-	transition: 'width 150ms',
+	transform: `scaleX(${vars.progressPercent})`,
+	transformOrigin: 'left',
+	willChange: 'transform',
+	transition: 'transform 150ms',
 	borderRadius: 2,
 	background: colors.gradient['01'],
 });
