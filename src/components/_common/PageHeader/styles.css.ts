@@ -33,6 +33,7 @@ const bodyRight = style({
 	display: 'flex',
 	alignItems: 'center',
 	justifyContent: 'flex-end',
+	gap: 16,
 });
 
 const back = style({
