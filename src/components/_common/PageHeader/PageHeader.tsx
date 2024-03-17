@@ -20,7 +20,7 @@ export default function PageHeader({
 				<div className={styles.bodyLeft}>
 					{onBack && (
 						<button className={styles.back} onClick={onBack}>
-							<img src="/icons/arrow-left.svg" className={styles.backIcon} />
+							<img src="/ico/24/arr_left.svg" className={styles.backIcon} />
 						</button>
 					)}
 					<h1 className={styles.title}>{title}</h1>

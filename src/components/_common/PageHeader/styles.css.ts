@@ -30,9 +30,11 @@ const bodyLeft = style({
 });
 
 const back = style({
+	all: 'unset',
 	width: 24,
 	height: 24,
 	marginRight: 4,
+	cursor: 'pointer',
 });
 
 const backIcon = style({
