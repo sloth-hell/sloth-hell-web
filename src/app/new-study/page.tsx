@@ -3,10 +3,11 @@
 import { useEffect, useState } from 'react';
 import DateTimeWheels from '@/components/DateTimeWheels';
 import PageHeader from '@/components/_common/PageHeader';
-import { BtnConfirm, BtnToggle } from '@/components/_common/buttons';
+import { BtnConfirm, BtnToggle, IconBtn } from '@/components/_common/buttons';
 import { PopupBottom, PopupConfirm } from '@/components/_common/popups';
 import { InputTextSingle, InputTextRange, CheckBox } from '@/components/_common/inputs';
 import styles from './styles.css';
+import Tooltip from '@/components/_common/Tooltip';
 
 export default function NewStudyPage() {
 	const [progress, setProgress] = useState(0);
@@ -74,10 +75,11 @@ export default function NewStudyPage() {
 
 	return (
 		<>
-			<PageHeader
-				onBack={() => {}}
-				title="새 스터디 만들기"
-				progress={progress}></PageHeader>
+			<PageHeader onBack={() => {}} title="새 스터디 만들기" progress={progress}>
+				<IconBtn iconSrc="/ico/24/how_study.svg">
+					<Tooltip type="bottomLeft">asdfasdf</Tooltip>
+				</IconBtn>
+			</PageHeader>
 			<main className={styles.main}>
 				{/* <DateTimeWheels /> */}
 				<InputTextSingle
