@@ -8,9 +8,11 @@ import { PopupBottom, PopupConfirm } from '@/components/_common/popups';
 import { InputTextSingle, InputTextRange, CheckBox } from '@/components/_common/inputs';
 import styles from './styles.css';
 import Tooltip from '@/components/_common/Tooltip';
+import Dropdown from '@/components/_common/Dropdown';
 
 export default function NewStudyPage() {
 	const [progress, setProgress] = useState(0);
+	const [isOpenDropdown, setIsOpenDropdown] = useState(false);
 	const [disabled, setDisabled] = useState(false);
 	const [active, setActive] = useState(true);
 	const [isOpenBottomPopup, setIsOpenBottomPopup] = useState(false);
@@ -78,6 +80,15 @@ export default function NewStudyPage() {
 			<PageHeader onBack={() => {}} title="새 스터디 만들기" progress={progress}>
 				<IconBtn iconSrc="/ico/24/how_study.svg">
 					<Tooltip type="bottomLeft">asdfasdf</Tooltip>
+				</IconBtn>
+				<IconBtn
+					iconSrc="/ico/24/etc.svg"
+					onClick={() => setIsOpenDropdown((prev) => !prev)}>
+					<Dropdown
+						type="bottomLeft"
+						items={['수정하기', '삭제하기']}
+						isOpen={isOpenDropdown}
+					/>
 				</IconBtn>
 			</PageHeader>
 			<main className={styles.main}>
