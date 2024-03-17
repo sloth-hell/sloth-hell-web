@@ -25,7 +25,7 @@ export default function PageHeader({
 					)}
 					<h1 className={styles.title}>{title}</h1>
 				</div>
-				{children}
+				<div className={styles.bodyRight}>{children}</div>
 			</div>
 			{typeof progress === 'number' && (
 				<div className={styles.progressBar}>

@@ -15,7 +15,6 @@ const container = style({
 });
 
 const body = style({
-	width: '100%',
 	height: 56,
 	margin: '0 16px',
 	display: 'flex',
@@ -27,6 +26,13 @@ const bodyLeft = style({
 	height: 26,
 	display: 'flex',
 	alignItems: 'center',
+});
+
+const bodyRight = style({
+	height: '100%',
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'flex-end',
 });
 
 const back = style({
@@ -66,6 +72,7 @@ const styles = {
 	container,
 	body,
 	bodyLeft,
+	bodyRight,
 	back,
 	backIcon,
 	title,
