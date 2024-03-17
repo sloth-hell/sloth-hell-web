@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 
 export interface TooltipProps {
 	isOpen?: boolean;
-	onChange?: (isShown: boolean) => void;
+	onChange?: (isOpen: boolean) => void;
 	type:
 		| 'top'
 		| 'bottom'
@@ -75,13 +75,15 @@ export default function Tooltip({
 
 	return (
 		<>
-			<div
-				className={clx(styles.tooltip({ position: primaryPosition }), className)}
-				onClick={handleClick}
-				style={style}>
-				<div className={styles.head({ position: primaryPosition })}></div>
-				<div className={styles.body({ position: secondaryPosition })}>{children}</div>
-			</div>
+			{(isOpen ?? true) && (
+				<div
+					className={clx(styles.tooltip({ position: primaryPosition }), className)}
+					onClick={handleClick}
+					style={style}>
+					<div className={styles.head({ position: primaryPosition })}></div>
+					<div className={styles.body({ position: secondaryPosition })}>{children}</div>
+				</div>
+			)}
 		</>
 	);
 }
