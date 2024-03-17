@@ -1,13 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DateTimeWheels from '@/components/DateTimeWheels';
+import PageHeader from '@/components/_common/PageHeader';
 import { BtnConfirm, BtnToggle } from '@/components/_common/buttons';
 import { PopupBottom, PopupConfirm } from '@/components/_common/popups';
 import { InputTextSingle, InputTextRange, CheckBox } from '@/components/_common/inputs';
 import styles from './styles.css';
 
 export default function NewStudyPage() {
+	const [progress, setProgress] = useState(0);
 	const [disabled, setDisabled] = useState(false);
 	const [active, setActive] = useState(true);
 	const [isOpenBottomPopup, setIsOpenBottomPopup] = useState(false);
@@ -31,6 +33,15 @@ export default function NewStudyPage() {
 	const handleInputText = (value: string) => {
 		setText(value);
 	};
+
+	useEffect(() => {
+		const timer = setInterval(() => {
+			setProgress((prev) => (prev + 10) % 100);
+		}, 1000);
+		return () => {
+			clearInterval(timer);
+		};
+	}, []);
 
 	const [rangeStart, setRangeStart] = useState('');
 	const [rangeEnd, setRangeEnd] = useState('');
@@ -62,70 +73,76 @@ export default function NewStudyPage() {
 	};
 
 	return (
-		<main className={styles.main}>
-			{/* <DateTimeWheels /> */}
-			<InputTextSingle
-				title="Single Line Text Field"
-				value={text}
-				isError={text === 'error'}
-				onInput={handleInputText}
-				subTextType="count"
-				maxLength={10}
-				errorMessage="똑바로 하세요"
-				normalMessage="single line text field"
-				style={{ margin: '16px 0' }}
-			/>
-			<InputTextRange
-				title="Range Input Field"
-				placeholder="냐이입력"
-				value={[rangeStart, rangeEnd]}
-				range={['20', '65']}
-				onInput={handleInputRange}
-				isError={[Number(rangeStart) > 10, Number(rangeEnd) < 10]}
-				unit="세"
-			/>
-			<div style={{ display: 'flex' }}>
-				<BtnToggle
-					title="True"
-					active={active}
-					onClick={handleClick}
-					className={styles.test}
+		<>
+			<PageHeader
+				onBack={() => {}}
+				title="새 스터디 만들기"
+				progress={progress}></PageHeader>
+			<main className={styles.main}>
+				{/* <DateTimeWheels /> */}
+				<InputTextSingle
+					title="Single Line Text Field"
+					value={text}
+					isError={text === 'error'}
+					onInput={handleInputText}
+					subTextType="count"
+					maxLength={10}
+					errorMessage="똑바로 하세요"
+					normalMessage="single line text field"
+					style={{ margin: '16px 0' }}
 				/>
-				<BtnToggle
-					title="False"
-					active={!active}
-					className={styles.test}
-					onClick={handleClickRightButton}
+				<InputTextRange
+					title="Range Input Field"
+					placeholder="냐이입력"
+					value={[rangeStart, rangeEnd]}
+					range={['20', '65']}
+					onInput={handleInputRange}
+					isError={[Number(rangeStart) > 10, Number(rangeEnd) < 10]}
+					unit="세"
 				/>
-			</div>
-			<BtnConfirm
-				title="확인"
-				disabled={false}
-				fixed={true}
-				onClick={handleClosePopupBottom}
-			/>
-
-			<PopupBottom
-				isOpen={isOpenBottomPopup}
-				onClose={handleClosePopupBottom}
-				className={styles.testPopup}>
-				testes adasf
+				<div style={{ display: 'flex' }}>
+					<BtnToggle
+						title="True"
+						active={active}
+						onClick={handleClick}
+						className={styles.test}
+					/>
+					<BtnToggle
+						title="False"
+						active={!active}
+						className={styles.test}
+						onClick={handleClickRightButton}
+					/>
+				</div>
 				<BtnConfirm
-					title="닫기"
+					title="확인"
 					disabled={false}
-					fixed={false}
+					fixed={true}
 					onClick={handleClosePopupBottom}
 				/>
-			</PopupBottom>
 
-			<PopupConfirm
-				isOpen={isOpenConfirmPopup}
-				title="TITLE"
-				description="description"
-				confirm={{ label: '확인', onClick: handleClosePopupConfirm }}
-				cancel={{ label: '취소', onClick: handleClosePopupConfirm }}
-				onClose={handleClosePopupConfirm}
-			/>
-		</main>
+				<PopupBottom
+					isOpen={isOpenBottomPopup}
+					onClose={handleClosePopupBottom}
+					className={styles.testPopup}>
+					testes adasf
+					<BtnConfirm
+						title="닫기"
+						disabled={false}
+						fixed={false}
+						onClick={handleClosePopupBottom}
+					/>
+				</PopupBottom>
+
+				<PopupConfirm
+					isOpen={isOpenConfirmPopup}
+					title="TITLE"
+					description="description"
+					confirm={{ label: '확인', onClick: handleClosePopupConfirm }}
+					cancel={{ label: '취소', onClick: handleClosePopupConfirm }}
+					onClose={handleClosePopupConfirm}
+				/>
+			</main>
+		</>
 	);
 }
