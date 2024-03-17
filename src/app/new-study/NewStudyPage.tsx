@@ -1,10 +1,9 @@
 'use client';
-
 import { useState } from 'react';
 import DateTimeWheels from '@/components/DateTimeWheels';
 import { BtnConfirm, BtnToggle } from '@/components/_common/buttons';
 import { PopupBottom, PopupConfirm } from '@/components/_common/popups';
-import { InputTextSingle, InputTextRange, CheckBox } from '@/components/_common/inputs';
+import { InputTextSingle, InputTextRange } from '@/components/_common/inputs';
 import styles from './styles.css';
 
 export default function NewStudyPage() {
@@ -36,23 +35,13 @@ export default function NewStudyPage() {
 	const [rangeEnd, setRangeEnd] = useState('');
 	type RangeSetter = React.Dispatch<React.SetStateAction<string>>;
 	type RangeInputHandler = (value: string) => void;
-	// const _rangeHandler = (setter: RangeSetter) => (value: string) => {
-	// 	console.log('page', value);
-	// 	setter(value);
-	// };
-	// const handleInputRange = [
-	// 	_rangeHandler(setRangeStart),
-	// 	_rangeHandler(setRangeEnd),
-	// ] as [RangeInputHandler, RangeInputHandler];
+	const _rangeHandler = (setter: RangeSetter) => (value: string) => {
+		console.log('page', value);
+		setter(value);
+	};
 	const handleInputRange = [
-		(value: string) => {
-			console.log('start', value);
-			setRangeStart(value);
-		},
-		(value: string) => {
-			console.log('end', value);
-			setRangeEnd(value);
-		},
+		_rangeHandler(setRangeStart),
+		_rangeHandler(setRangeEnd),
 	] as [RangeInputHandler, RangeInputHandler];
 
 	const [isChecked, setIsChecked] = useState(false);
@@ -63,7 +52,7 @@ export default function NewStudyPage() {
 
 	return (
 		<main className={styles.main}>
-			{/* <DateTimeWheels /> */}
+			<DateTimeWheels />
 			<InputTextSingle
 				title="Single Line Text Field"
 				value={text}
@@ -79,10 +68,9 @@ export default function NewStudyPage() {
 				title="Range Input Field"
 				placeholder="냐이입력"
 				value={[rangeStart, rangeEnd]}
-				range={['20', '65']}
 				onInput={handleInputRange}
+				range={['0세', '100세']}
 				isError={[Number(rangeStart) > 10, Number(rangeEnd) < 10]}
-				unit="세"
 			/>
 			<div style={{ display: 'flex' }}>
 				<BtnToggle
