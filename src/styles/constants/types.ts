@@ -26,7 +26,7 @@ export type ColorMapSeq = {
 	[key in ColorMapSeqKey]?: string;
 };
 
-export type ZIndexMapKey = 'base' | 'modal' | 'confirm' | 'tooltip';
+export type ZIndexMapKey = 'base' | 'modal' | 'confirm' | 'tooltip' | 'dropdown';
 export type ZIndexMap = {
 	[key in ZIndexMapKey]: number;
 };
