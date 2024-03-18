@@ -14,8 +14,10 @@
 		"@vanilla-extract/css": "^1.14.0",
 		"@vanilla-extract/dynamic": "^2.1.0",
 		"@vanilla-extract/recipes": "^0.5.1",
+		"classnames": "^2.5.1",
 		"dayjs": "^1.11.10",
 		"next": "14.0.4",
+		"normalize.css": "^8.0.1",
 		"react": "^18",
 		"react-dom": "^18",
 		"recoil": "^0.7.7"

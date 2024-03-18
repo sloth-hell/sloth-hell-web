@@ -1,7 +1,7 @@
 import { style, createVar } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { _colors } from '@/styles/themes.css';
+import { colors } from '@/styles/constants';
 
 export const vars = {
 	wheelY: createVar(),
@@ -22,7 +22,7 @@ export const container = style({
 	justifyContent: 'center',
 	alignItems: 'center',
 	// gap: 12,
-	border: `1px solid ${_colors.line['01']}`,
+	border: `1px solid ${colors.line['01']}`,
 	borderRadius: 8,
 	overflow: 'hidden',
 	transition: 'transform 100ms',
@@ -63,7 +63,7 @@ export const item = recipe({
 		letterSpacing: -0.5,
 		fontSize: 20,
 		textAlign: 'center',
-		color: _colors.gray['03'],
+		color: colors.gray['03'] as string,
 		userSelect: 'none',
 	},
 	variants: {
@@ -82,7 +82,7 @@ export const item = recipe({
 			minute: {},
 		},
 		selected: {
-			true: { fontWeight: 700, fontSize: 22, color: _colors.gray['01'] },
+			true: { fontWeight: 700, fontSize: 22, color: colors.gray['01'] as string },
 		},
 		bound: {
 			true: { opacity: 0.4 },
@@ -109,7 +109,7 @@ export const highlight = style({
 	margin: 'auto 8px',
 	background: 'linear-gradient(91deg, #2A2B2E 0%, rgba(53, 53, 53, 0.00) 100%)',
 	borderRadius: 8,
-	border: `1px solid ${_colors.line['01']}`,
+	border: `1px solid ${colors.line['01']}`,
 	zIndex: -1,
 });
 

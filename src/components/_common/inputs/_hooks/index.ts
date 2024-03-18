@@ -1,0 +1,1 @@
+export { useInputInfo } from './useInputInfo';

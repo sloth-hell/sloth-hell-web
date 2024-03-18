@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
 // import '@/styles/globals.css';
+import 'normalize.css';
 import '@/styles/global.css';
 
 const inter = Inter({ subsets: ['latin'] });

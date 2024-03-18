@@ -1,5 +1,5 @@
 import { globalStyle, fontFace } from '@vanilla-extract/css';
-import { _colors } from './themes.css';
+import { colors } from '@/styles/constants';
 
 const spocaSans = fontFace({
 	src: 'url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css)',
@@ -20,8 +20,8 @@ globalStyle('html', {
 });
 
 globalStyle('body', {
-	color: _colors.gray['01'],
-	backgroundColor: _colors.bg['01'],
+	color: colors.gray['01'] as string,
+	backgroundColor: colors.bg['01'] as string,
 	fontFamily: spocaSans,
 });
 
