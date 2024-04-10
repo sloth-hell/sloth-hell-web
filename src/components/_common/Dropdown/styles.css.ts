@@ -41,8 +41,8 @@ const dropdown = recipe({
 		background: colors.bg['02'],
 		zIndex: zIndex.dropdown,
 		// animation: `${_fadeIn} 150ms ease-in-out`,
-		willChange: 'opacity',
-		transition: 'opacity 150ms',
+		willChange: 'opacity, visibility',
+		transition: '150ms',
 	},
 	variants: {
 		status: {
@@ -54,6 +54,7 @@ const dropdown = recipe({
 			// },
 			hidden: {
 				opacity: 0,
+				visibility: 'hidden',
 			},
 		},
 		position: {
