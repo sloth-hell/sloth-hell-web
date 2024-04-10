@@ -8,6 +8,7 @@ const form = style({
 	alignItems: 'center',
 	justifyContent: 'flex-end',
 	gap: 8,
+	cursor: 'pointer',
 });
 
 const checkbox = style({
