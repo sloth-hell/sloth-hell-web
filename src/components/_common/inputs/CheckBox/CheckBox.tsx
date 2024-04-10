@@ -3,10 +3,10 @@ import styles from './styles.css';
 export interface CheckBoxProps {
 	checked: boolean;
 	onChange: (checked: boolean) => void;
-	title?: string;
+	label?: string;
 }
 
-export default function CheckBox({ checked, onChange, title }: CheckBoxProps) {
+export default function CheckBox({ checked, onChange, label }: CheckBoxProps) {
 	const handleChange: React.FormEventHandler<HTMLInputElement> = (event) => {
 		onChange((event.target as HTMLInputElement).checked);
 	};
@@ -20,7 +20,7 @@ export default function CheckBox({ checked, onChange, title }: CheckBoxProps) {
 				id="checkbox"
 			/>
 			<label htmlFor="checkbox" className={styles.label}>
-				{title}
+				{label}
 			</label>
 		</form>
 	);
