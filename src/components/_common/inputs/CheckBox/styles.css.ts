@@ -1,8 +1,7 @@
 import { style } from '@vanilla-extract/css';
-import { recipe } from '@vanilla-extract/recipes';
 import { colors } from '@/styles/constants';
 
-const form = style({
+const wrapper = style({
 	width: '100%',
 	display: 'flex',
 	alignItems: 'center',
@@ -42,7 +41,7 @@ const label = style({
 });
 
 const styles = {
-	form,
+	wrapper,
 	checkbox,
 	label,
 };

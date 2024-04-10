@@ -11,7 +11,7 @@ export default function CheckBox({ checked, onChange, label }: CheckBoxProps) {
 		onChange((event.target as HTMLInputElement).checked);
 	};
 	return (
-		<form className={styles.form}>
+		<div className={styles.wrapper}>
 			<input
 				type="checkbox"
 				className={styles.checkbox}
@@ -22,6 +22,6 @@ export default function CheckBox({ checked, onChange, label }: CheckBoxProps) {
 			<label htmlFor="checkbox" className={styles.label}>
 				{label}
 			</label>
-		</form>
+		</div>
 	);
 }
