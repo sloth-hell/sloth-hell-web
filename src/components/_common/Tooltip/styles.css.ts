@@ -79,20 +79,21 @@ const body = recipe({
 		backgroundColor: colors.primary.red['02'],
 		opacity: '80%',
 		position: 'relative',
+		whiteSpace: 'nowrap',
 	},
 	variants: {
 		position: {
 			top: {
-				bottom: '25%',
+				bottom: 'calc(50% - 22px)',
 			},
 			bottom: {
-				top: '25%',
+				top: 'calc(50% - 22px)',
 			},
 			left: {
-				right: '25%',
+				right: 'calc(50% - 22px)',
 			},
 			right: {
-				left: '25%',
+				left: 'calc(50% - 22px)',
 			},
 		},
 	},
