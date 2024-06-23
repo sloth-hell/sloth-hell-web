@@ -53,7 +53,7 @@ export default function InputTextBase({
 	const handleInput: React.FormEventHandler<HTMLInputElement> = (event) => {
 		let _value = (event.target as HTMLInputElement).value;
 
-		if ((maxLength ?? 0) > 0) {
+		if (_value.length >= (maxLength ?? 0)) {
 			_value = _value.slice(0, maxLength);
 		}
 
@@ -122,7 +122,7 @@ export default function InputTextBase({
 
 		if (value.length > 0) {
 			setValueInternal(value + _postfix);
-		} else if (value.length < _postfix.length) {
+		} else if (value.length <= _postfix.length) {
 			setValueInternal('');
 		}
 	}, [value]);
