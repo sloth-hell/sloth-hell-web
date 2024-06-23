@@ -1,6 +1,5 @@
 import { use, useEffect, useMemo } from 'react';
 import clx from 'classnames';
-import { useFadeOut } from '@/hooks';
 import styles from './styles.css';
 
 export type DropdownItem =

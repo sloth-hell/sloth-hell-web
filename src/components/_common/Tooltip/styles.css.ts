@@ -9,6 +9,7 @@ const tooltip = recipe({
 		alignItems: 'center',
 		justifyContent: 'flex-start',
 		zIndex: zIndex.tooltip,
+		cursor: 'default',
 	},
 	variants: {
 		isOpen: {

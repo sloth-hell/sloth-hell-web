@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import DateTimeWheels from '@/components/DateTimeWheels';
 import PageHeader from '@/components/_common/PageHeader';
 import { BtnConfirm, BtnToggle, IconBtn } from '@/components/_common/buttons';
@@ -9,6 +9,7 @@ import { InputTextSingle, InputTextRange, CheckBox } from '@/components/_common/
 import styles from './styles.css';
 import Tooltip from '@/components/_common/Tooltip';
 import Dropdown from '@/components/_common/Dropdown';
+import RadioButtonGroup from '@/components/_common/inputs/RadioButtonGroup';
 
 export default function NewStudyPage() {
 	const [progress, setProgress] = useState(0);
@@ -75,11 +76,15 @@ export default function NewStudyPage() {
 		// setIsChecked(checked);
 	};
 
+	const onChangeRadios = useCallback((index: number) => {
+		console.log('onChangeRadios:', index);
+	}, []);
+
 	return (
 		<>
 			<PageHeader onBack={() => {}} title="새 스터디 만들기" progress={progress}>
 				<IconBtn iconSrc="/ico/24/how_study.svg">
-					<Tooltip type="bottomLeft">asdfasdf</Tooltip>
+					<Tooltip type="bottomLeft">Tip!</Tooltip>
 				</IconBtn>
 				<IconBtn
 					iconSrc="/ico/24/etc.svg"
@@ -93,6 +98,7 @@ export default function NewStudyPage() {
 			</PageHeader>
 			<main className={styles.main}>
 				{/* <DateTimeWheels /> */}
+				<RadioButtonGroup labels={['ab', 'bc', 'cd', 'de']} onChange={onChangeRadios} />
 				<InputTextSingle
 					title="Single Line Text Field"
 					value={text}

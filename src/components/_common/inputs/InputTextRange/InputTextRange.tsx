@@ -103,7 +103,7 @@ export default function InputTextRange({
 					{title}
 				</p>
 				{isShowAll && (
-					<CheckBox checked={isSelectedAll} onChange={handleChangeAll} title="전체" />
+					<CheckBox checked={isSelectedAll} onChange={handleChangeAll} label="전체" />
 				)}
 			</div>
 			<div className={styles.containerInput}>

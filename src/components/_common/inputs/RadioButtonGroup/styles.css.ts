@@ -1,21 +1,30 @@
 import { style } from '@vanilla-extract/css';
 import { colors } from '@/styles/constants';
 
-const wrapper = style({
+const group = style({
+	width: '100%',
+});
+
+const itemWrapper = style({
 	width: '100%',
 	display: 'flex',
 	alignItems: 'center',
-	justifyContent: 'flex-end',
+	justifyContent: 'flex-start',
 	gap: 8,
 	cursor: 'pointer',
+	selectors: {
+		'& + &': {
+			marginTop: 12,
+		},
+	},
 });
 
-const checkbox = style({
+const radio = style({
 	all: 'unset',
 	width: 20,
 	height: 20,
 	position: 'relative',
-	borderRadius: 6,
+	borderRadius: 10,
 	border: `1px solid ${colors.line['01']}`,
 	'::after': {
 		width: 12,
@@ -23,7 +32,7 @@ const checkbox = style({
 		position: 'absolute',
 		top: 4,
 		left: 4,
-		borderRadius: 3.5,
+		borderRadius: 6,
 		content: '',
 		willChange: 'background-color',
 		transition: '100ms',
@@ -41,8 +50,9 @@ const label = style({
 });
 
 const styles = {
-	wrapper,
-	checkbox,
+	group,
+	itemWrapper,
+	radio,
 	label,
 };
 

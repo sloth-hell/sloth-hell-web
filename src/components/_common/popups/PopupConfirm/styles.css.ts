@@ -69,6 +69,7 @@ const button = recipe({
 				borderLeft: `1px solid ${colors.line['02']}`,
 			},
 		},
+		cursor: 'pointer',
 	},
 	variants: {
 		type: {
