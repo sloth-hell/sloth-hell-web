@@ -27,6 +27,7 @@ interface InputTextProps {
 	ref?: React.RefObject<HTMLInputElement>;
 	normalMessage?: string;
 	errorMessage?: string;
+	children?: React.ReactNode;
 }
 
 export default function InputText({
@@ -44,6 +45,7 @@ export default function InputText({
 	ref,
 	className,
 	style,
+	children,
 }: InputTextProps) {
 	const info = useInputInfo({ isError, errorMessage, normalMessage });
 
@@ -67,6 +69,7 @@ export default function InputText({
 			{info.message && (
 				<p className={styles.info({ status: info.status })}>{info.message}</p>
 			)}
+			{children}
 		</div>
 	);
 }
