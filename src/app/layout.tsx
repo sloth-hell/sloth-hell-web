@@ -1,3 +1,5 @@
+'use client';
+
 import type { Metadata } from 'next';
 import Head from 'next/head';
 import { Inter } from 'next/font/google';
@@ -7,19 +9,27 @@ import 'dayjs/locale/ko';
 import 'normalize.css';
 import '@/styles/global.css';
 
+import { useAtom } from 'jotai';
+import { useHydrateAtoms } from 'jotai/utils';
+import { confirmPopup } from '@/store/atoms';
+import { PopupConfirm } from '@/components/_common/popups';
+
 const inter = Inter({ subsets: ['latin'] });
 dayjs.locale('ko');
 
-export const metadata: Metadata = {
-	title: 'Sloth Hell',
-	description: "I don't want to go to Sloth Hell",
-};
+// export const metadata: Metadata = {
+// 	title: 'Sloth Hell',
+// 	description: "I don't want to go to Sloth Hell",
+// };
 
 export default function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	// useHydrateAtoms([[confirmPopup, { isOpen: false }]]);
+	const [confirm] = useAtom(confirmPopup);
+
 	return (
 		<>
 			<Head>
@@ -29,7 +39,10 @@ export default function RootLayout({
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<html lang="ko">
-				<body className={inter.className}>{children}</body>
+				<body className={inter.className}>
+					{children}
+					<PopupConfirm {...confirm} />
+				</body>
 			</html>
 		</>
 	);
