@@ -1,9 +1,10 @@
-import { useMemo } from 'react';
+import Image, { type StaticImageData } from 'next/image';
 import clx from 'classnames';
 import styles from './styles.css';
 
 export interface IconBtnProps extends React.HTMLAttributes<HTMLButtonElement> {
-	iconSrc: string;
+	iconSrc: StaticImageData;
+	alt?: string;
 }
 
 export default function IconBtn({
@@ -11,6 +12,7 @@ export default function IconBtn({
 	onClick,
 	className,
 	children,
+	alt = '',
 	...rest
 }: IconBtnProps) {
 	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -25,7 +27,7 @@ export default function IconBtn({
 			className={clx(styles.iconBtn, className)}
 			onClick={handleClick}
 			{...rest}>
-			<img src={iconSrc} className={styles.icon} />
+			<Image src={iconSrc} className={styles.icon} alt={alt} />
 			{children}
 		</button>
 	);
