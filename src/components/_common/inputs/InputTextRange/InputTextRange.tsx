@@ -1,6 +1,6 @@
-import { useState, useMemo, useRef, useEffect } from 'react';
+import { useMemo } from 'react';
 import clx from 'classnames';
-import { InputTextBase, CheckBox } from '..';
+import { InputTextBase } from '..';
 import type {
 	InputTextInputHandler,
 	InputTextFocusHandler,
@@ -16,7 +16,7 @@ type SharedOrSeparateProp<T> = T | SeparateProp<T>;
 
 export interface InputTextRangeProps {
 	value: SeparateProp<string>;
-	onInput: SeparateProp<InputTextInputHandler> | InputMultipleTextInputHandler;
+	onInput: SharedOrSeparateProp<InputTextInputHandler>;
 	onFocus?: SharedOrSeparateProp<InputTextFocusHandler>;
 	onBlur?: SharedOrSeparateProp<InputTextBlurHandler>;
 	placeholder?: SharedOrSeparateProp<string>;
@@ -45,11 +45,7 @@ export default function InputTextRange({
 	onBlur,
 	placeholder,
 	isError,
-	title,
-	largeTitle,
 	hideDelBtn,
-	hideAll,
-	range,
 	className,
 	style,
 	ref,
@@ -65,12 +61,6 @@ export default function InputTextRange({
 	const isErrors = cloneSharedProp(isError);
 	const units = cloneSharedProp(unit);
 
-	const [isSelectedAll, setIsSelectedAll] = useState(false);
-
-	const isShowAll = useMemo(() => {
-		return !hideAll && range && range.every(Boolean);
-	}, [hideAll, range]);
-
 	const _isError = useMemo(() => {
 		return isErrors.some(Boolean);
 	}, [isErrors]);
@@ -81,32 +71,8 @@ export default function InputTextRange({
 		normalMessage,
 	});
 
-	const handleChangeAll = (checked: boolean) => {
-		setIsSelectedAll(checked);
-
-		if (range && checked) {
-			onInputs[0](range[0]);
-			onInputs[1](range[1]);
-		}
-	};
-
-	useEffect(() => {
-		if (!range) {
-			return;
-		}
-		setIsSelectedAll(value[0] === range[0] && value[1] === range[1]);
-	}, [value, range]);
-
 	return (
 		<div className={clx(styles.container, className)} style={style}>
-			<div className={styles.header}>
-				{/* <p className={styles.title({ type: largeTitle ? 'large' : 'normal' })}>
-					{title}
-				</p> */}
-				{isShowAll && (
-					<CheckBox checked={isSelectedAll} onChange={handleChangeAll} label="전체" />
-				)}
-			</div>
 			<div className={styles.containerInput}>
 				<InputTextBase
 					value={value[0]}
