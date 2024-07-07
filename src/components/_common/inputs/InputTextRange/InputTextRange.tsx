@@ -5,17 +5,18 @@ import type {
 	InputTextInputHandler,
 	InputTextFocusHandler,
 	InputTextBlurHandler,
+	InputMultipleTextInputHandler,
 } from '../_types';
 import styles from './styles.css';
 import { useInputInfo } from '../_hooks';
 
-type SeparatePropsOptional<T> = [T | undefined, T | undefined];
-type SeparateProps<T> = [T, T];
-type SharedOrSeparateProp<T> = T | SeparateProps<T>;
+type SeparatePropOptional<T> = [T | undefined, T | undefined];
+type SeparateProp<T> = [T, T];
+type SharedOrSeparateProp<T> = T | SeparateProp<T>;
 
 export interface InputTextRangeProps {
-	value: SeparateProps<string>;
-	onInput: SharedOrSeparateProp<InputTextInputHandler>;
+	value: SeparateProp<string>;
+	onInput: SeparateProp<InputTextInputHandler> | InputMultipleTextInputHandler;
 	onFocus?: SharedOrSeparateProp<InputTextFocusHandler>;
 	onBlur?: SharedOrSeparateProp<InputTextBlurHandler>;
 	placeholder?: SharedOrSeparateProp<string>;
@@ -27,7 +28,7 @@ export interface InputTextRangeProps {
 	range?: [string, string];
 	className?: string;
 	style?: React.CSSProperties;
-	ref?: SeparatePropsOptional<React.RefObject<HTMLInputElement>>;
+	ref?: SeparatePropOptional<React.RefObject<HTMLInputElement>>;
 	errorMessage?: string;
 	normalMessage?: string;
 	unit?: SharedOrSeparateProp<string>;
@@ -99,9 +100,9 @@ export default function InputTextRange({
 	return (
 		<div className={clx(styles.container, className)} style={style}>
 			<div className={styles.header}>
-				<p className={styles.title({ type: largeTitle ? 'large' : 'normal' })}>
+				{/* <p className={styles.title({ type: largeTitle ? 'large' : 'normal' })}>
 					{title}
-				</p>
+				</p> */}
 				{isShowAll && (
 					<CheckBox checked={isSelectedAll} onChange={handleChangeAll} label="전체" />
 				)}
