@@ -1,17 +1,12 @@
-import { style, keyframes } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
+import { fadeIn } from '@/styles/keyframes';
 import { colors } from '@/styles/constants';
-
-const fadeIn = keyframes({
-	'0%': { opacity: 0 },
-	'100%': { opacity: 1 },
-});
 
 const container = recipe({
 	base: {
 		width: '100%',
 		height: 48,
-		margin: '10px 0',
 		padding: '0 12px',
 		display: 'flex',
 		justifyContent: 'center',
