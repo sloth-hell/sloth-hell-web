@@ -30,6 +30,10 @@ globalStyle('a', {
 	textDecoration: 'none',
 });
 
+globalStyle('li, ul, ol', {
+	all: 'unset',
+});
+
 globalStyle('*', {
 	boxSizing: 'border-box',
 	padding: 0,
