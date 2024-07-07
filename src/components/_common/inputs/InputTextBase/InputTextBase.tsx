@@ -165,7 +165,11 @@ export default function InputTextBase({
 			/>
 			<SubText />
 			{!hideDelBtn && isShowDelete && (
-				<button type="button" className={styles.delBtn} onClick={handleClickDelete}>
+				<button
+					type="button"
+					className={styles.delBtn}
+					onClick={handleClickDelete}
+					tabIndex={-1}>
 					<Image src="/ico/20/inputdelete.svg" alt="delete" width={20} height={20} />
 				</button>
 			)}
