@@ -2,15 +2,15 @@ import { useState, useEffect } from 'react';
 import styles from './styles.css';
 
 export interface RadioButtonGroupProps {
-	labels: string[];
-	onChange: (index: number) => void;
+	options: string[];
+	onChange?: (index: number) => void;
 }
 
-export default function RadioButtonGroup({ labels, onChange }: RadioButtonGroupProps) {
+export default function RadioButtonGroup({ options, onChange }: RadioButtonGroupProps) {
 	const [checkedIndex, setCheckedIndex] = useState(0);
 
 	useEffect(() => {
-		onChange(checkedIndex);
+		onChange && onChange(checkedIndex);
 	}, [onChange, checkedIndex]);
 
 	const eventHandlerFor = (index: number) => () => {
@@ -21,7 +21,7 @@ export default function RadioButtonGroup({ labels, onChange }: RadioButtonGroupP
 
 	return (
 		<ul className={styles.group}>
-			{labels.map((label, index) => (
+			{options.map((label, index) => (
 				<li
 					className={styles.itemWrapper}
 					key={`radio-${index}`}
