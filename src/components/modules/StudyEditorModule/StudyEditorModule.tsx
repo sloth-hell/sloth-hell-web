@@ -103,7 +103,7 @@ export default function StudyEditorModule({}: StudyEditorModuleProps) {
 					title="새 스터디 만들기"
 					onBack={goToHome}
 					totalSteps={8}
-					step={step}>
+					step={step + 1}>
 					<IconBtn iconSrc={HowStudy}>
 						<Tooltip type="bottomLeft">스터디 만드는 법 다시 보기</Tooltip>
 					</IconBtn>
