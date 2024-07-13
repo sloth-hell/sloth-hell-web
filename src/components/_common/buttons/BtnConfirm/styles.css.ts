@@ -66,6 +66,7 @@ const buttonConfirm = style([
 		zIndex: zIndex.confirm,
 		willChange: 'background, color',
 		transition: '100ms',
+		cursor: 'pointer',
 	},
 ]);
 
