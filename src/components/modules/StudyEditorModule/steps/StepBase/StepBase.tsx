@@ -33,7 +33,7 @@ export default function StepBase({
 			}
 
 			_scrollTimer = null;
-		}, 150);
+		}, 50);
 	}, [ref.current]);
 
 	return (
