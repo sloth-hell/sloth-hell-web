@@ -40,6 +40,7 @@ export const zIndex: ZIndexMap = {
 	base: 0,
 	tooltip: 10,
 	dropdown: 20,
+	header: 99,
 	confirm: 99,
 	modal: 999,
 };

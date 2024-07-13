@@ -1,5 +1,5 @@
 import { style, createVar } from '@vanilla-extract/css';
-import { colors } from '@/styles/constants';
+import { colors, zIndex } from '@/styles/constants';
 
 export const vars = {
 	progressPercent: createVar(),
@@ -7,6 +7,7 @@ export const vars = {
 
 const container = style({
 	position: 'fixed',
+	zIndex: zIndex.header,
 	width: '100%',
 	height: 'auto',
 	top: 0,
