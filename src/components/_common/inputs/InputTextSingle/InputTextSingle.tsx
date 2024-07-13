@@ -4,17 +4,18 @@ import clx from 'classnames';
 import { InputTextBase } from '..';
 import { useInputInfo } from '../_hooks';
 import type {
-	InputTextInputHandler,
-	InputTextFocusHandler,
-	InputTextBlurHandler,
+	InputTextEventHandler,
+	InputTextInputEventHandler,
+	InputTextFocusEventHandler,
+	InputTextBlurEventHandler,
 } from '../_types';
 import styles from './styles.css';
 
 interface InputTextProps {
 	value: string;
-	onInput: InputTextInputHandler;
-	onFocus?: InputTextFocusHandler;
-	onBlur?: InputTextBlurHandler;
+	onInput: InputTextEventHandler<string>;
+	onFocus?: InputTextFocusEventHandler;
+	onBlur?: InputTextBlurEventHandler;
 	placeholder?: string;
 	isError?: boolean;
 	title?: string;
@@ -31,11 +32,11 @@ interface InputTextProps {
 }
 
 export default function InputText({
-	title,
-	largeTitle,
 	value,
 	placeholder,
 	onInput,
+	onFocus,
+	onBlur,
 	isError,
 	subTextType,
 	customSubText,
@@ -49,16 +50,17 @@ export default function InputText({
 }: InputTextProps) {
 	const info = useInputInfo({ isError, errorMessage, normalMessage });
 
+	const handleInput: InputTextInputEventHandler = ({ value }) => {
+		onInput(value);
+	};
+
 	return (
 		<div className={clx(styles.container, className)} style={style}>
-			{title && (
-				<p className={styles.title({ type: largeTitle ? 'large' : 'normal' })}>
-					{title}
-				</p>
-			)}
 			<InputTextBase
 				value={value}
-				onInput={onInput}
+				onInput={handleInput}
+				onFocus={onFocus}
+				onBlur={onBlur}
 				placeholder={placeholder}
 				isError={isError}
 				subTextType={subTextType}

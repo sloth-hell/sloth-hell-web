@@ -1,20 +1,20 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import clx from 'classnames';
 import type {
-	InputTextInputHandler,
-	InputTextFocusHandler,
-	InputTextBlurHandler,
+	InputTextInputEventHandler,
+	InputTextFocusEventHandler,
+	InputTextBlurEventHandler,
 } from '../_types';
 import styles from './styles.css';
 
 export interface InputTextBaseProps {
 	value: string;
-	onInput: InputTextInputHandler;
-	onFocus?: InputTextFocusHandler;
-	onBlur?: InputTextBlurHandler;
+	onInput: InputTextInputEventHandler;
+	onFocus?: InputTextFocusEventHandler;
+	onBlur?: InputTextBlurEventHandler;
 	placeholder?: string;
 	isError?: boolean;
 	subTextType?: 'count' | 'custom' | false;
@@ -51,7 +51,9 @@ export default function InputTextBase({
 	const refInternal = useRef<HTMLInputElement>(null);
 
 	const handleInput: React.FormEventHandler<HTMLInputElement> = (event) => {
-		let _value = (event.target as HTMLInputElement).value;
+		const _target = event.target as HTMLInputElement;
+
+		let _value = _target.value;
 
 		if (_value.length >= (maxLength ?? 0)) {
 			_value = _value.slice(0, maxLength);
@@ -61,7 +63,15 @@ export default function InputTextBase({
 			_value = _value.replace(postfix, '');
 		}
 
-		onInput(_value);
+		if (event.nativeEvent instanceof InputEvent) {
+			const { inputType } = event.nativeEvent;
+
+			if (/^delete.*Backward$/.test(inputType) && _value === _target.value) {
+				_value = _value.slice(0, _value.length - 1);
+			}
+		}
+
+		onInput({ value: _value, target: _target, nativeEvent: event.nativeEvent });
 	};
 
 	useEffect(() => {
@@ -93,49 +103,46 @@ export default function InputTextBase({
 		return `${_length}/${_maxLength}`;
 	}, [value, maxLength]);
 
-	const handleFocus: React.FormEventHandler<HTMLInputElement> = (event) => {
+	const handleFocus: React.FocusEventHandler<HTMLInputElement> = (event) => {
 		setIsFocused(true);
 
 		const target = event.target as HTMLInputElement;
 		const { length } = target.value;
 
-		if (length > 0) {
-			target.setSelectionRange(length, length);
-		}
-
-		onFocus && onFocus();
+		onFocus && onFocus({ target, nativeEvent: event.nativeEvent });
 	};
 
-	const handleBlur: React.FormEventHandler<HTMLInputElement> = () => {
+	const handleBlur: React.FocusEventHandler<HTMLInputElement> = (event) => {
 		setIsFocused(false);
-		onBlur && onBlur();
+
+		const _target = event.target as HTMLInputElement;
+		onBlur && onBlur({ target: _target, nativeEvent: event.nativeEvent });
 	};
 
-	const handleClickDelete: React.MouseEventHandler<HTMLButtonElement> = () => {
+	const handleClickDelete: React.MouseEventHandler<HTMLButtonElement> = (event) => {
 		setValueInternal('');
-		onInput('');
+
+		onInput({
+			value: '',
+			target: _ref?.current ?? undefined,
+			nativeEvent: event.nativeEvent,
+		});
 		_ref.current && _ref.current.focus();
 	};
 
 	useEffect(() => {
 		const _postfix = postfix ?? '';
 
-		if (value.length > 0) {
-			setValueInternal(value + _postfix);
-		} else if (value.length <= _postfix.length) {
-			setValueInternal('');
-		}
+		setValueInternal(value.length > 0 ? value + _postfix : '');
 	}, [value]);
 
 	useEffect(() => {
-		_ref.current?.setSelectionRange(
-			valueInternal.length - (postfix?.length ?? 0),
-			valueInternal.length - (postfix?.length ?? 0),
-		);
+		const _postfix = postfix ?? '';
 
-		if (valueInternal.length < (postfix?.length ?? 0)) {
-			setValueInternal('');
-		}
+		_ref.current?.setSelectionRange(
+			valueInternal.length - _postfix.length,
+			valueInternal.length - _postfix.length,
+		);
 	}, [valueInternal]);
 
 	const SubText = useCallback(() => {

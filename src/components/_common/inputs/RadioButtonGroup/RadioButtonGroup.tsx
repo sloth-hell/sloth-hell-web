@@ -2,21 +2,18 @@ import { useState, useEffect } from 'react';
 import styles from './styles.css';
 
 export interface RadioButtonGroupProps {
+	value: number;
 	options: string[];
-	onChange?: (index: number) => void;
+	onChange: (index: number) => void;
 }
 
-export default function RadioButtonGroup({ options, onChange }: RadioButtonGroupProps) {
-	const [checkedIndex, setCheckedIndex] = useState(0);
-
-	useEffect(() => {
-		onChange && onChange(checkedIndex);
-	}, [onChange, checkedIndex]);
-
+export default function RadioButtonGroup({
+	value,
+	options,
+	onChange,
+}: RadioButtonGroupProps) {
 	const eventHandlerFor = (index: number) => () => {
-		setCheckedIndex(() => {
-			return index;
-		});
+		onChange(index);
 	};
 
 	return (
@@ -30,7 +27,7 @@ export default function RadioButtonGroup({ options, onChange }: RadioButtonGroup
 						className={styles.radio}
 						type="radio"
 						name="radio"
-						checked={checkedIndex === index}
+						checked={value === index}
 						onChange={eventHandlerFor(index)}
 					/>
 					<label className={styles.label}>{label}</label>

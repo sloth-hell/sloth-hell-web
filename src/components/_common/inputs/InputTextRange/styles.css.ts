@@ -45,6 +45,7 @@ const separater = style({});
 const info = recipe({
 	base: {
 		fontSize: 14,
+		marginTop: 8,
 	},
 	variants: {
 		status: {
