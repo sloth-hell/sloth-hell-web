@@ -24,6 +24,7 @@ const radio = style({
 	width: 20,
 	height: 20,
 	position: 'relative',
+	cursor: 'pointer',
 	borderRadius: 10,
 	border: `1px solid ${colors.line['01']}`,
 	'::after': {
@@ -47,6 +48,7 @@ const radio = style({
 const label = style({
 	fontSize: 16,
 	color: colors.gray['01'],
+	cursor: 'pointer',
 });
 
 const styles = {
