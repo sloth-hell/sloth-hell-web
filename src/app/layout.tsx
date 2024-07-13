@@ -1,6 +1,6 @@
 'use client';
 
-import type { Metadata } from 'next';
+// import type { Metadata } from 'next';
 import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import dayjs from 'dayjs';
@@ -10,9 +10,9 @@ import 'normalize.css';
 import '@/styles/global.css';
 
 import { useAtom } from 'jotai';
-import { useHydrateAtoms } from 'jotai/utils';
+// import { useHydrateAtoms } from 'jotai/utils';
 import { confirmPopup } from '@/store/atoms';
-import { PopupConfirm } from '@/components/_common/popups';
+import { PopupConfirm } from '@/components/_common';
 
 const inter = Inter({ subsets: ['latin'] });
 dayjs.locale('ko');
