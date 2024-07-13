@@ -1,4 +1,5 @@
 import { assignInlineVars } from '@vanilla-extract/dynamic';
+import { useMemo } from 'react';
 import styles, { vars } from './styles.css';
 
 export interface PageHeaderProps {
@@ -6,6 +7,8 @@ export interface PageHeaderProps {
 	onBack?: () => void;
 	children?: React.ReactNode;
 	progress?: number;
+	totalSteps?: number;
+	step?: number;
 }
 
 export default function PageHeader({
@@ -13,7 +16,21 @@ export default function PageHeader({
 	onBack,
 	children,
 	progress,
+	totalSteps,
+	step,
 }: PageHeaderProps) {
+	const _progressInPercent = useMemo(() => {
+		if (progress !== undefined) {
+			return progress;
+		}
+
+		if (totalSteps && step) {
+			return (step / totalSteps) * 100;
+		}
+
+		return null;
+	}, [totalSteps, step]);
+
 	return (
 		<header className={styles.container}>
 			<div className={styles.body}>
@@ -27,11 +44,13 @@ export default function PageHeader({
 				</div>
 				<div className={styles.bodyRight}>{children}</div>
 			</div>
-			{typeof progress === 'number' && (
+			{_progressInPercent !== null && (
 				<div className={styles.progressBar}>
 					<div
 						className={styles.progressBarActive}
-						style={assignInlineVars({ [vars.progressPercent]: `${progress}%` })}></div>
+						style={assignInlineVars({
+							[vars.progressPercent]: `${_progressInPercent}%`,
+						})}></div>
 				</div>
 			)}
 		</header>
