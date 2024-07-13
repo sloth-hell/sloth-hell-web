@@ -28,18 +28,37 @@ export const useGlobalConfirm = () => {
 
 	const showConfirm: ShowConfirm = ({ title, description, confirm, cancel }) => {
 		// beforeOpen && beforeOpen();
+		const setIsClosed = () => {
+			setInfo({ isOpen: false });
+		};
+
 		setInfo({
 			isOpen: true,
 			title,
 			description,
 			confirm: (() => {
-				if (typeof confirm === 'string') return { label: confirm, onClick: () => {} };
-				if (typeof confirm === 'function') return { label: '확인', onClick: confirm };
+				if (typeof confirm === 'string')
+					return { label: confirm, onClick: setIsClosed };
+				if (typeof confirm === 'function')
+					return {
+						label: '확인',
+						onClick: (event) => {
+							confirm(event);
+							setIsClosed();
+						},
+					};
 				return confirm;
 			})(),
 			cancel: (() => {
-				if (typeof cancel === 'string') return { label: cancel, onClick: () => {} };
-				if (typeof cancel === 'function') return { label: '확인', onClick: cancel };
+				if (typeof cancel === 'string') return { label: cancel, onClick: setIsClosed };
+				if (typeof cancel === 'function')
+					return {
+						label: '확인',
+						onClick: (event) => {
+							cancel(event);
+							setIsClosed();
+						},
+					};
 				return cancel;
 			})(),
 			// typeof cancel === 'function' ? { label: '취소', onClick: cancel } : cancel,
