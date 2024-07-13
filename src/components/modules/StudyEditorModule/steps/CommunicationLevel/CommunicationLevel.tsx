@@ -13,7 +13,7 @@ const COMMUNICATION_LEVELS = [
 ];
 
 export default function CommunicationLevel({ onInput }: CommunicationLevelProps) {
-	const [selected, setSelected] = useState(0);
+	const [selected, setSelected] = useState(-1);
 	const handleChange = (index: number) => {
 		setSelected(index);
 		onInput(COMMUNICATION_LEVELS[index]);
