@@ -1,0 +1,1 @@
+export { confirmPopup } from './confirmPopup';

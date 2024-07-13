@@ -1,12 +1,12 @@
 import { useAtom } from 'jotai';
 import { confirmPopup } from '@/store/atoms';
 
-interface UseGlobalConfirmProps {
-	beforeOpen?: () => void;
-	afterOpen?: () => void;
-	beforeHide?: () => void;
-	afterHide?: () => void;
-}
+// interface UseGlobalConfirmProps {
+// 	beforeOpen?: () => void;
+// 	afterOpen?: () => void;
+// 	beforeHide?: () => void;
+// 	afterHide?: () => void;
+// }
 type ShowConfirmArgs = {
 	title?: string;
 	description?: string;
